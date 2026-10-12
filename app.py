@@ -45,7 +45,7 @@ async def process_frame(image_data: str = Form(...), mode: str = Form("palm")):
         h, w, _ = frame.shape
 
         # รัน YOLO ตรวจจับมือ
-        results = model.predict(frame, conf=0.25, verbose=False)
+        results = model.predict(frame, imgsz=320, conf=0.25, verbose=False)
         boxes = results[0].boxes
 
         total_hand_pixels = 0
